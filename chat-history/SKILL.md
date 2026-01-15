@@ -1,6 +1,6 @@
 ---
 name: chat-history
-description: Search and explore previous AI chat conversations from Cursor IDE and Claude Code. This skill should be used when the user asks about previous conversations, wants to find how they solved something before, searches for discussions about specific files/functions, or needs to recall past AI interactions. Triggers include phrases like "search my chat history", "find previous conversations", "how did I solve X last time", "what did we discuss about Y".
+description: Search previous AI chat conversations from Cursor IDE and Claude Code by content, affected file, or project. Use when the user asks about previous conversations, wants to find how they solved something before, or needs to recall past AI interactions.
 ---
 
 # Chat History Search
@@ -252,6 +252,25 @@ grep -rl "keyword1" ~/.claude/projects/ --include="*.jsonl" | xargs grep -l "key
 ### Find by File Path Discussed
 ```bash
 grep -rl "src/components/Button" ~/.claude/projects/ --include="*.jsonl" | head -10
+```
+
+### Find by Project
+```bash
+# List all projects with conversations
+ls ~/.claude/projects/
+
+# List conversations for specific project
+# Path encoding: /Users/me/my-project → -Users-me-my-project
+ls ~/.claude/projects/-Users-me-my-project/
+
+# All conversations for a project
+find ~/.claude/projects/-Users-me-my-project/ -name "*.jsonl" -type f
+
+# Last N conversations for a project (by modification time)
+ls -lt ~/.claude/projects/-Users-me-my-project/*.jsonl | head -2
+
+# Search within a project only (fast)
+grep -rl "keyword" ~/.claude/projects/-Users-me-my-project/ --include="*.jsonl"
 ```
 
 ### Get Tool Operations on a File

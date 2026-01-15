@@ -1,6 +1,6 @@
 # Chat History Skill
 
-Search previous AI chat conversations from **Cursor IDE** and **Claude Code** by content or affected file.
+Search previous AI chat conversations from **Cursor IDE** and **Claude Code** by content, affected file, or project.
 
 <p align="center">
   <img src="https://img.shields.io/badge/Claude_Code-supported-blue" alt="Claude Code">
